@@ -24,8 +24,8 @@ public class SparkMainRest {
             return new Gson().toJson(new StandardResponse(StatusResponse.SUCCESS));
         });
 
-        get("/reminder", (request, response) -> {
-            response.type("application/json");
+        get("/reminder/get-all", (request, response) -> {
+             response.type("application/json");
 
             return new Gson().toJson(new StandardResponse(StatusResponse.SUCCESS, new Gson().toJsonTree(remindService.getRemindList())));
         });
