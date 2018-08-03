@@ -25,18 +25,18 @@ public class SparkMainRest {
         });
 
         get("/reminder/get-all", (request, response) -> {
-             response.type("application/json");
+            response.type("application/json");
 
             return new Gson().toJson(new StandardResponse(StatusResponse.SUCCESS, new Gson().toJsonTree(remindService.getRemindList())));
         });
 
-        get("/reminder/:id", (request, response) -> {
+        get("/reminder/get-by-id/:id", (request, response) -> {
             response.type("application/json");
 
             return new Gson().toJson(new StandardResponse(StatusResponse.SUCCESS, new Gson().toJsonTree(remindService.getRemind(request.params(":id")))));
         });
 
-        put("/reminder/:id", (request, response) -> {
+        put("/reminder/edit/:id", (request, response) -> {
             response.type("application/json");
 
             Remind toEdit = new Gson().fromJson(request.body(), Remind.class);
